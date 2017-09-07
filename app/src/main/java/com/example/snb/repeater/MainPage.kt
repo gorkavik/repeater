@@ -18,7 +18,7 @@ class MainPage : AppCompatActivity() {
 
     private val mHideRunnable = Runnable { hide() }
 
-    private val mDelayHideTouchListener = View.OnTouchListener { view, motionEvent ->
+    private val mDelayHideTouchListener = View.OnTouchListener { _, _ ->
         if (AUTO_HIDE) delayedHide(AUTO_HIDE_DELAY_MILLIS)
         false
     }
@@ -38,7 +38,7 @@ class MainPage : AppCompatActivity() {
         mVisible = true
         mControlsView = findViewById(fullscreen_content_controls)
         mContentView = findViewById(fullscreen_content)
-        mContentView!!.setOnClickListener { value -> if (mVisible) hide() else show() }
+        mContentView!!.setOnClickListener { if (mVisible) hide() else show() }
         findViewById(dummy_button).setOnTouchListener(mDelayHideTouchListener)
     }
 
@@ -54,7 +54,6 @@ class MainPage : AppCompatActivity() {
         delayedHide(UI_ANIMATION_DELAY, mShowPart2Runnable, mHidePart2Runnable)
     }
 
-    @SuppressLint("InlinedApi")
     private fun show() {
         mContentView!!.systemUiVisibility = SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
         mVisible = true
