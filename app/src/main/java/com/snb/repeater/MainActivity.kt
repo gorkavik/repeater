@@ -1,12 +1,8 @@
 package com.snb.repeater
 
 import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import org.androidannotations.annotations.EActivity
 
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+@EActivity(R.layout.activity_main)
+open class MainActivity : AppCompatActivity() {
 }
