@@ -1,4 +1,4 @@
-package com.example.snb.repeater;
+package com.snb.repeater;
 
 import org.junit.Test;
 
