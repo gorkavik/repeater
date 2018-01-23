@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Repeater</string>
+    <string name="lexeme">lexeme</string>
+    <string name="definition">definition</string>
+    <string name="cancel">cancel</string>
+    <string name="submit">submit</string>
+    <string name="image">Image</string>
 </resources>
