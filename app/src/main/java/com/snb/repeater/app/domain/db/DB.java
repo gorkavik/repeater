@@ -7,5 +7,5 @@ public class DB {
 //    Create entity, dao for it.
 //    Implement CRUD methods (create, read, update, delete)
 //    *** Add tests for each method
-//    info
+//    info : https://stfalcon.com/ru/blog/post/simple-unit-tests-for-android
 }
