@@ -11,8 +11,8 @@ import com.snb.repeater.app.domain.DB;
  * 04.02.2018.
  */
 @Database(entities = {DB.class}, version = 1)
-public abstract class DBHelper extends RoomDatabase {
+public abstract class DBAbstract extends RoomDatabase {
 
-        public abstract DBDao getDBDao();
+        public abstract DBDao getDBDao(); //return all metods
 
 }
