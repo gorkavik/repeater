@@ -15,9 +15,9 @@ public class DB {
 //    *** Add tests for each method
 //    info : https://stfalcon.com/ru/blog/post/simple-unit-tests-for-android
 
-    @PrimaryKey int question_id = 0;
-    String question = "question1";
-    String answer = "answer1";
+    @PrimaryKey int question_id;
+    String question;
+    String answer;
 
 // get/set for question_id
     public int getQuestion_id() {

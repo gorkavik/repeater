@@ -25,7 +25,7 @@ public interface DBDao {
         void delete(DB db);
 
         // Get questions from DB
-        @Query("SELECT 0 FROM db ")
+        @Query("SELECT * FROM db ")
         List<DB> getAllData();
 
 }

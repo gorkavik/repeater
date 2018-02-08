@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                lexeme.setText(dbabstract.getDBDao().getAllData());
+                lexeme.setText("hello world");
             }
         });
     }
