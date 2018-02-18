@@ -44,6 +44,11 @@
             android:text="@string/definition"
             android:textAppearance="@style/TextAppearance.AppCompat" />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="172dp"

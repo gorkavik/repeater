@@ -3,7 +3,7 @@ package com.snb.repeater.app.domain.db;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
-import com.snb.repeater.app.domain.DB;
+import com.snb.repeater.app.domain.db.DB;
 
 /**
  * Created by

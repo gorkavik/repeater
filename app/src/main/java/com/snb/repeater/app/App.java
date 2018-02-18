@@ -6,6 +6,7 @@ import android.arch.persistence.room.Room;
 import com.snb.repeater.app.domain.db.DBAbstract;
 
 public class App extends Application {
+
     private static App instance;
     private DBAbstract db;
 
