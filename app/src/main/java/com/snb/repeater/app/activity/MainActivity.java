@@ -1,16 +1,21 @@
 package com.snb.repeater.app.activity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.view.View;
+
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.snb.repeater.R;
 import com.snb.repeater.app.App;
+import com.snb.repeater.app.domain.db.DB;
 import com.snb.repeater.app.domain.db.DBAbstract;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,27 +28,48 @@ public class MainActivity extends AppCompatActivity {
     protected Button submit;
     @BindView(R.id.lexeme)
     protected TextView lexeme;
-    @BindView(R.id.recycler)
-    protected RecyclerView recycler;
+    @BindView(R.id.definition)
+    protected TextView definition;
 
-    private DBAbstract dbabstract;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        dbabstract = App.getInstance().getDBInstance();
 
     }
 
+    public void onSubmitClick (View v) {
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        DataAdapter recyclerAdapter = new DataAdapter(this, dbabstract.getDBDao().getAllData());
+        AsyncBase insertbase = new AsyncBase();
+        insertbase.execute();
 
-        recycler.setAdapter(recyclerAdapter);
+    }
+
+    class AsyncBase extends AsyncTask<Void, Void, Void> {
+
+        DBAbstract dbabstract = App.getInstance().getDBInstance();
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            DB db = new DB();
+            db.setId(1);
+            db.setQuestion("first_question");
+            db.setAnswer("first_answer");
+            dbabstract.getDBDao().insert(db);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            lexeme.setText("straus");
+            //List<DB> list = new ArrayList();
+            //list = dbabstract.getDBDao().getAllData();
+
+            definition.setText("popugai");
+        }
     }
 }
+
