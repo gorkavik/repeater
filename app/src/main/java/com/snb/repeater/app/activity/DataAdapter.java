@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.snb.repeater.R;
-import com.snb.repeater.app.domain.db.DB;
+import com.snb.repeater.app.domain.model.DB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,7 @@ import butterknife.ButterKnife;
  * Gorkavik_O
  * 18.02.2018.
  */
-
-public class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<DB> dbList = new ArrayList<>();
     private Context context;

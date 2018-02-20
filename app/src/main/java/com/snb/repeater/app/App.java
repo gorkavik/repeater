@@ -14,15 +14,18 @@ public class App extends Application {
         return instance;
     }
 
-//db instance
-@Override
+    //db instance
+    @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
-         db = Room.databaseBuilder(getApplicationContext(), DBAbstract.class, "data-database")
+        this.db = Room
+                .databaseBuilder(getApplicationContext(), DBAbstract.class, "data-database")
                 //.allowMainThreadQueries()
                 .build();
     }
 
-    public DBAbstract getDBInstance() { return db;}
+    public DBAbstract getDBInstance() {
+        return db;
+    }
 }
