@@ -1,4 +1,4 @@
-package com.snb.repeater.app.activity;
+package com.snb.repeater.app.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

@@ -1,4 +1,4 @@
-package com.snb.repeater.app.activity;
+package com.snb.repeater.app.ui.activity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,11 +11,14 @@ import com.snb.repeater.R;
 import com.snb.repeater.app.App;
 import com.snb.repeater.app.domain.db.DBAbstract;
 import com.snb.repeater.app.domain.model.DB;
+import com.snb.repeater.app.ui.task.Task;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.snb.repeater.app.App.getInstance;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,31 +39,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onSubmitClick(View v) {
-        new Task().execute();
-    }
+        new Task<>(() -> {
 
-    private class Task extends AsyncTask<Void, Void, Void> {
-
-        private DBAbstract dbabstract = App.getInstance().getDBInstance();
-        private List<DB> data;
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            DB db = new DB();
+            final DB db = new DB();
             db.setId(1);
             db.setQuestion("first_question");
             db.setAnswer("first_answer");
-            dbabstract.getDBDao().insert(db);
-            this.data = dbabstract.getDBDao().getAllData();
-            return null;
-        }
 
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
+            final DBAbstract dbabstract = getInstance().getDBInstance();
+            dbabstract.getDBDao().insert(db);
+            return dbabstract.getDBDao().getAllData();
+
+        }, (data) -> {
             lexeme.setText(data.get(0).getQuestion());
             definition.setText(data.get(0).getAnswer());
-        }
+        }).execute();
     }
 }
 
