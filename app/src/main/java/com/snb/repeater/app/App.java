@@ -1,10 +1,11 @@
 package com.snb.repeater.app;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
 
 import com.snb.repeater.app.domain.context.Holder;
-import com.snb.repeater.app.domain.db.DBAbstract;
+import com.snb.repeater.app.domain.dao.DAOFactory;
+import com.snb.repeater.app.domain.model.DB;
+import com.snb.repeater.app.ui.task.Task;
 
 public class App extends Application {
 
@@ -12,5 +13,15 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         Holder.setContext(getApplicationContext());
+        DAOFactory.getInstance();
+
+        new Task<>(() -> {
+            final DB db = new DB();
+            db.setId(1);
+            db.setQuestion("first_question");
+            db.setAnswer("first_answer");
+            DAOFactory.getInstance().insert(db);
+            return null;
+        }).execute();
     }
 }

@@ -1,4 +1,4 @@
-package com.snb.repeater.app.domain.db;
+package com.snb.repeater.app.domain.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
@@ -9,13 +9,8 @@ import com.snb.repeater.app.domain.model.DB;
 
 import java.util.List;
 
-/**
- * Created by
- * Gorkavik_O
- * 04.02.2018.
- */
 @Dao
-public interface DBDao {
+public interface DAO {
     // Add question to DB
     @Insert
     void insert(DB db);

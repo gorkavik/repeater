@@ -1,7 +1,7 @@
 package com.snb.repeater.app.ui.adapter;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,35 +10,28 @@ import android.widget.TextView;
 import com.snb.repeater.R;
 import com.snb.repeater.app.domain.model.DB;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by
- * Gorkavik_O
- * 18.02.2018.
- */
-public class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class DataAdapter extends Adapter<ViewHolder> {
 
-    private List<DB> dbList = new ArrayList<>();
-    private Context context;
+    private List<DB> dbList;
 
-    public DataAdapter(Context context, List<DB> dbList) {
-        this.context = context;
+    public DataAdapter(final List<DB> dbList) {
         this.dbList = dbList;
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main, parent, false);
-        return new NewsViewHolder(view);
+    public ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+        return new NewsViewHolder(LayoutInflater
+                .from(parent.getContext())
+                .inflate(R.layout.activity_main, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final NewsViewHolder viewHolder = (NewsViewHolder) holder;
         viewHolder.lexeme.setText(dbList.get(position).getQuestion());
         viewHolder.definition.setText(dbList.get(position).getAnswer());
@@ -49,19 +42,16 @@ public class DataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return dbList.size();
     }
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder {
+    class NewsViewHolder extends ViewHolder {
 
         @BindView(R.id.lexeme)
-        public TextView lexeme;
+        protected TextView lexeme;
         @BindView(R.id.definition)
-        public TextView definition;
+        protected TextView definition;
 
-        public NewsViewHolder(View itemView) {
+        NewsViewHolder(final View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
         }
     }
-
-
 }

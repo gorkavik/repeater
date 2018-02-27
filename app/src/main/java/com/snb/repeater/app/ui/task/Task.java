@@ -7,11 +7,6 @@ import android.support.annotation.RequiresApi;
 import java.util.concurrent.Callable;
 import java.util.function.Consumer;
 
-/**
- * Gorkavik_O
- * 24.02.2018.
- */
-
 public class Task<T> extends AsyncTask<Void, T, T> {
 
     private final Callable<T> callable;
@@ -22,11 +17,15 @@ public class Task<T> extends AsyncTask<Void, T, T> {
         this.consumer = consumer;
     }
 
+    public Task(final Callable<T> callable) {
+        this(callable, null);
+    }
+
     @Override
     protected T doInBackground(final Void... voids) {
         try {
             return callable.call();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             return null;
         }
     }
@@ -34,6 +33,8 @@ public class Task<T> extends AsyncTask<Void, T, T> {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onPostExecute(final T t) {
-        consumer.accept(t);
+        if (consumer != null) {
+            consumer.accept(t);
+        }
     }
 }
