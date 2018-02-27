@@ -1,5 +1,6 @@
 package com.snb.repeater.app.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
                     lexeme.setText(data.get(0).getQuestion());
                     definition.setText(data.get(0).getAnswer());
                 }).execute();
+    }
+
+    public void onCancelClick(final View v) {
+        startActivity(new Intent(this, StartActivity.class));
     }
 }
 
