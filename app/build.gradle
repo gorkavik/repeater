@@ -78,6 +78,14 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.android.support:recyclerview-v7:27.0.2'
+
+    //    Assigment:
+    //    Read: https://habrahabr.ru/post/336196/
+    //    Understand: what is Room? and what for it?
+    //    Create entity, dao for it.
+    //    Implement CRUD methods (create, read, update, delete)
+    //    *** Add tests for each method
+    //    info : https://stfalcon.com/ru/blog/post/simple-unit-tests-for-android
 }
 repositories {
     mavenCentral()
