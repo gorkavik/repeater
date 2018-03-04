@@ -8,11 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.snb.repeater.R;
-import com.snb.repeater.app.domain.dao.DAOFactory;
 import com.snb.repeater.app.ui.task.Task;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.snb.repeater.app.domain.dao.abstr.DAOFactory.getINSTANCE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,11 +34,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onSubmitClick(final View v) {
-        new Task<>(() -> DAOFactory.getInstance().getAllData(),
-                (data) -> {
-                    lexeme.setText(data.get(0).getQuestion());
-                    definition.setText(data.get(0).getAnswer());
-                }).execute();
+        new Task<>(() -> getINSTANCE().getQuestionDao().getAll(),
+                (data) -> lexeme.setText(data.get(0).getQuestion()))
+                .execute();
+
+        new Task<>(() -> getINSTANCE().getAnswerDao().getAll(),
+                (data) -> definition.setText(data.get(0).getAnswer()))
+                .execute();
     }
 
     public void onCancelClick(final View v) {
