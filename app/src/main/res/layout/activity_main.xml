@@ -34,6 +34,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Button" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
     </LinearLayout>
 
     <TextView
@@ -47,7 +59,7 @@
         android:text="@string/lexeme"
         android:textAppearance="@style/TextAppearance.AppCompat"
         tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="232dp" />
+        tools:layout_editor_absoluteY="296dp" />
 
     <TextView
         android:id="@+id/definition"
@@ -57,7 +69,7 @@
         android:text="@string/definition"
         android:textAppearance="@style/TextAppearance.AppCompat"
         tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="268dp" />
+        tools:layout_editor_absoluteY="332dp" />
 
     <Button
         android:id="@+id/cancel"
