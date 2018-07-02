@@ -7,12 +7,13 @@ import com.snb.repeater.app.domain.dao.entity.AnswerDAO;
 import com.snb.repeater.app.domain.dao.entity.QuestionDAO;
 import com.snb.repeater.app.domain.dao.relation.Question2AnswerDAO;
 
-import lombok.Getter;
-
 public class DAOFactory {
 
-    @Getter
-    public final static DAOFactory INSTANCE = new DAOFactory();
+    private final static DAOFactory INSTANCE = new DAOFactory();
+
+    public static DAOFactory getINSTANCE() {
+        return INSTANCE;
+    }
 
     private final DAOAbstract DB = Room
             .databaseBuilder(Holder.getContext(), DAOAbstract.class, "data-database")
