@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.snb.repeater.R;
+import com.snb.repeater.app.domain.conccurent.executor.AppExecutorModule;
+import com.snb.repeater.app.domain.dao.DAOModule;
 import com.snb.repeater.app.domain.dao.entity.AnswerDAO;
 import com.snb.repeater.app.domain.dao.entity.QuestionDAO;
 import com.snb.repeater.app.domain.conccurent.executor.AppExecutor;
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         final AppComponent component = DaggerAppComponent
                 .builder()
+                .dAOModule(new DAOModule(this))
+                .appExecutorModule(new AppExecutorModule())
                 .build();
 
         this.executor = component.getAppExecutor();

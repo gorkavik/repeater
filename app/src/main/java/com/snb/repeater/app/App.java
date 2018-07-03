@@ -2,6 +2,8 @@ package com.snb.repeater.app;
 
 import android.app.Application;
 
+import com.snb.repeater.app.domain.conccurent.executor.AppExecutorModule;
+import com.snb.repeater.app.domain.dao.DAOModule;
 import com.snb.repeater.app.domain.model.entity.Answer;
 import com.snb.repeater.app.domain.model.entity.Question;
 import com.snb.repeater.app.domain.model.relations.Question2Answer;
@@ -16,6 +18,8 @@ public class App extends Application {
 
         final AppComponent component = DaggerAppComponent
                 .builder()
+                .dAOModule(new DAOModule(this))
+                .appExecutorModule(new AppExecutorModule())
                 .build();
 
         component
