@@ -11,16 +11,25 @@ import android.view.MenuItem;
 
 import com.snb.repeater.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class NavigationActivity extends AppCompatActivity {
 
+    @BindView(R.id.toolbar)
+    protected Toolbar toolbar;
+    @BindView(R.id.drawer_layout)
+    protected DrawerLayout drawer;
+    @BindView(R.id.nav_view)
+    protected NavigationView navigationView;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
-        final Toolbar toolbar = findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
-        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
                 drawer,
                 toolbar,
@@ -29,7 +38,6 @@ public class NavigationActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        final NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
     }
 

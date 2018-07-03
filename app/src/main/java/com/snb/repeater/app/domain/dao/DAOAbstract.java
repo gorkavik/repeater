@@ -1,4 +1,4 @@
-package com.snb.repeater.app.domain.dao.abstr;
+package com.snb.repeater.app.domain.dao;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
@@ -11,17 +11,17 @@ import com.snb.repeater.app.domain.model.entity.Question;
 import com.snb.repeater.app.domain.model.relations.Question2Answer;
 
 @Database(entities = {Answer.class, Question.class, Question2Answer.class}, version = 1)
-abstract class DAOAbstract extends RoomDatabase {
+public abstract class DAOAbstract extends RoomDatabase {
 
     /*
     * Entities
     * */
-    abstract AnswerDAO getAnswerDao();
+    public abstract AnswerDAO getAnswerDao();
 
-    abstract QuestionDAO getQuestionDao();
+    public abstract QuestionDAO getQuestionDao();
 
     /*
     * Relations
     * */
-    abstract Question2AnswerDAO getQuestion2AnswerDao();
+    public abstract Question2AnswerDAO getQuestion2AnswerDao();
 }
